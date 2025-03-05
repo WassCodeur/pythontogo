@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Represent Python Togo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .product-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 400px;
+            height: 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-details {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .current-price {
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
+        }
+
+        .original-price {
+            color: #666;
+            text-decoration: line-through;
+        }
+
+        .buy-button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .carousel-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 10px;
+            margin: 0 20px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-dot.active {
+            background-color: #4CAF50;
+        }
+
+        .carousel-arrow {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            user-select: none;
+        }
+
+        @media (max-width: 768px) {
+            .product-container {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .product-details {
+                text-align: center;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="product-container">
+        <div class="product-image-container">
+            <img id="productImage" src="" alt="Python Togo T-Shirt" class="product-image">
+        </div>
+        <div class="product-details">
+            <h1 class="product-title">T-Shirt</h1>
+            <p class="product-description">Support our community by grabbing official Python Togo merchandise. Every
+                purchase helps us grow!</p>
+            <div class="product-price">
+                <span class="current-price">3.500 CFA</span>
+                <span class="original-price">5000 CFA</span>
+            </div>
+            <a href="#" class="buy-button">Buy Swag</a>
+        </div>
+    </div>
+
+    <div class="carousel-navigation">
+        <button class="carousel-arrow" id="prevButton">←</button>
+        <div class="carousel-dots" id="carouselDots">
+            <div class="carousel-dot" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+            <div class="carousel-dot" data-index="3"></div>
+            <div class="carousel-dot" data-index="4"></div>
+        </div>
+        <button class="carousel-arrow" id="nextButton">→</button>
+    </div>
+
+    <script>
+        const tshirtImages = [
+            // Base64 encoded images would be inserted here
+            'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMC...', // Replace with actual base64 encoded image
+            'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMC...', // Another image
+            // Add more images as needed
+        ];
+
+        const productImage = document.getElementById('productImage');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const carouselDots = document.getElementById('carouselDots');
+
+        let currentImageIndex = 0;
+
+        function updateImage(index) {
+            productImage.src = tshirtImages[index];
+
+            // Update active dot
+            document.querySelectorAll('.carousel-dot').forEach(dot => {
+                dot.classList.remove('active');
+            });
+            carouselDots.children[index].classList.add('active');
+        }
+
+        // Initialize with first image
+        updateImage(currentImageIndex);
+
+        // Next button
+        nextButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % tshirtImages.length;
+            updateImage(currentImageIndex);
+        });
+
+        // Previous button
+        prevButton.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + tshirtImages.length) % tshirtImages.length;
+            updateImage(currentImageIndex);
+        });
+
+        // Dot navigation
+        carouselDots.addEventListener('click', (e) => {
+            if (e.target.classList.contains('carousel-dot')) {
+                currentImageIndex = parseInt(e.target.dataset.index);
+                updateImage(currentImageIndex);
+            }
+        });
+    </script>
+</body>
+
+</html>
