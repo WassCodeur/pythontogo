@@ -4,11 +4,19 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from datetime import datetime
 import pycountry
+import os   
+
+
+
 
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+
+static_folder = os.path.join(os.path.dirname(__file__), "static")
+templates_folder = os.path.join(os.path.dirname(__file__), "templates")
+app.mount("/static", StaticFiles(directory=static_folder), name="static")
+templates = Jinja2Templates(directory=templates_folder)
 
 year = datetime.now().year
 
@@ -21,7 +29,7 @@ languages = [
     {"name": "English", "code": "En", "flag": flags[0]},
     {"name": "French", "code": "Fr", "flag": flags[1]},
 ]
-templates = Jinja2Templates(directory="templates")
+
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -69,6 +77,6 @@ def contact(request: Request):
 
 if __name__ == "__main__":
     import uvicorn
-    
 
     uvicorn.run(app, host="0.0.0.0", port=8000)
+   
