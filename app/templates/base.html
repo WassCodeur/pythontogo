@@ -7,36 +7,43 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/team.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/shop.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/all.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/getinvolve.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/gallery.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/events.css') }}">
+
     <link rel="stylesheet" href="{{ url_for('static', path='css/initiatives.css') }}">
-    <script src="{{ url_for('static', path='JS/main.js') }}" defer></script>
+
     <link rel="shortcut icon" href=" {{ url_for('static', path='images/favicon.svg') }}" type="image/x-icon">
     {% block head %}{% endblock %}
-
     <title>Python Togo | {% block title %}{% endblock %} </title>
+    <script src="{{ url_for('static', path='JS/main.js') }}" defer></script>
+
 </head>
 
 
 <body>
     <!-- Header -->
     <header class="header">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+
+
         <div class="logo">
             <img src="{{ url_for('static', path='images/logo.svg') }}" alt="Python Togo Logo">
-            <!-- <div class="logo-text">
-                <h1>python</h1>
-                <span>togo</span>
-            </div> -->
+
         </div>
 
-        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+       
 
         <nav class="nav">
             <ul class="nav-links" id="navLinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Get Involved</a></li>
-                <li><a href="#">Our Programs</a></li>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#involve">Get Involved</a></li>
+                <li><a href="#initiatives">Our Programs</a></li>
+                <li><a href="{{ url_for('gallery')}}">Gallery</a></li>
+                <li><a href="{{ url_for('events')}}">Events</a></li>
             </ul>
         </nav>
         <div class="nav-cta">
@@ -49,6 +56,7 @@
             </select>
             <a href="#" class="btn-swag">Shop Swag</a>
         </div>
+
     </header>
 
     <!-- Main Content Area -->
@@ -67,11 +75,12 @@
 
             <!-- Navigation -->
             <ul class="nav-links footer-nav">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Get Involved</a></li>
-                <li><a href="#">Our Programs</a></li>
-                <li><a href="#">Shop Swags</a></li>
+                <li><a href="{{ url_for('home')}}">Home</a></li>
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#involve">Get Involved</a></li>
+                <li><a href="#initiatives">Our Programs</a></li>
+                <li><a href="{{ url_for('gallery')}}">Gallery</a></li>
+                <li><a href="{{ url_for('events')}}">Events</a></li>
             </ul>
 
             <!-- Social Media Icons -->
@@ -109,14 +118,19 @@
             </div>
         </div>
 
-        <!-- Horizontal divider -->
         <div class="footer-divider"></div>
 
-        <!-- Copyright notice -->
         <div class="copyright">
             &copy; {{ year }} Python Togo Society. All rights reserved.
         </div>
     </footer>
 </body>
+
+
+
+
+{% block scripts %}
+
+{% endblock %}
 
 </html>

@@ -1,12 +1,14 @@
 .team-section {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
+    
 
 }
 
 .team-title-container {
    
     align-items: center;
+    margin-top: 30px;
     margin-bottom: 30px;
 }
 

@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Togo - Empowering Python Developers</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Python Togo - Events</title>
     <style>
         :root {
-            --python-blue: #3776AB;
-            --python-yellow: #FFD43B;
-            --text-dark: #333;
-            --bg-light: #f4f4f4;
+            --primary: #4CAF50;
+            --primary-dark: #3e8e41;
+            --secondary: #646464;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
             --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         * {
@@ -24,419 +26,756 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
+            color: var(--dark-gray);
+            background-color: #f9f9f9;
         }
 
-        /* Navigation */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background-color: var(--white);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand img {
-            height: 50px;
-        }
-
-        .navbar-menu {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin-right: 2rem;
-        }
-
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--python-blue);
-        }
-
-        .nav-cta {
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-cta a {
-            text-decoration: none;
-            margin-left: 1rem;
-        }
-
-        .btn-swag {
-            background-color: var(--python-blue);
-            color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn-swag:hover {
-            background-color: #2c5f87;
-        }
-
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(to right, var(--python-blue), #2c5f87);
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 1rem;
-        }
-
-        .hero-content {
-            max-width: 800px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-cta {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .hero-cta a {
-            text-decoration: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-        }
-
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--python-blue);
-        }
-
-        .btn-secondary {
-            border: 2px solid var(--white);
-            color: var(--white);
-        }
-
-        /* Sections */
-        .section {
-            padding: 4rem 5%;
-            text-align: center;
+            padding: 20px;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: var(--dark-gray);
+            position: relative;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 15px auto;
         }
 
-        .card {
+        .event-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .event-tab {
+            padding: 10px 20px;
             background-color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: bold;
+            box-shadow: var(--box-shadow);
         }
 
-        .team-card {
+        .event-tab.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .event-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-details {
+            padding: 20px;
+        }
+
+        .event-category {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-description {
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .event-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* Event details modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            width: 90%;
+            max-width: 900px;
+            margin: 50px auto;
+            border-radius: var(--border-radius);
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .event-detail-header {
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            position: relative;
+        }
+
+        .event-header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7));
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: flex-end;
+            padding: 30px;
+            color: var(--white);
         }
 
-        .team-card img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
+        .event-detail-content {
+            padding: 30px;
         }
 
-        .bg-light {
-            background-color: var(--bg-light);
-        }
-
-        .swag-item {
+        .event-time-location {
             display: flex;
-            align-items: center;
-            gap: 2rem;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
-        .swag-item img {
-            max-width: 200px;
+        .event-info-group {
+            flex: 1;
         }
 
-        /* Footer */
-        .footer {
-            background-color: #1a1a1a;
-            color: var(--white);
-            padding: 3rem 5%;
+        .event-info-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            border-bottom-color: var(--primary);
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Schedule styling */
+        .schedule-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .schedule-time {
+            width: 100px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .schedule-details {
+            flex: 1;
+        }
+
+        /* Speakers styling */
+        .speakers-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
         }
 
-        .footer a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .speaker-card {
+            text-align: center;
         }
 
-        .footer a:hover {
-            color: var(--python-blue);
+        .speaker-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
         }
 
-        /* Responsive Design */
-        @media screen and (max-width: 768px) {
+        .speaker-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
 
-            .nav-links,
-            .nav-cta {
-                display: none;
-            }
+        .speaker-title {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
 
-            .mobile-menu-toggle {
-                display: block;
-            }
+        /* Registration form */
+        .registration-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
-            .grid {
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+        }
+
+        .form-submit {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: var(--border-radius);
+            width: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .events-container {
                 grid-template-columns: 1fr;
             }
 
-            .navbar {
-                justify-content: space-between;
-            }
-
-            .footer {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-cta {
+            .event-time-location {
                 flex-direction: column;
-                align-items: center;
+                gap: 20px;
             }
 
-            .hero-cta a {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 1rem;
+            .schedule-item {
+                flex-direction: column;
+            }
+
+            .schedule-time {
+                margin-bottom: 10px;
+            }
+
+            .speakers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="navbar-brand">
-            <img src="/api/placeholder/100/50" alt="Python Togo Logo">
-        </div>
-        <div class="mobile-menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="navbar-menu">
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Our Story</a></li>
-                <li><a href="#">Get Involved</a></li>
-                <li><a href="#">Our Programs</a></li>
-            </ul>
-            <div class="nav-cta">
-                <!-- <a href="#">EN</a> -->
-                <select name="" id="">
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                </select>
-                <a href="#" class="btn-swag">Shop Swag</a>
-            </div>
-        </div>
-    </nav>
+    <div class="container">
+        <h1 class="section-title">Python Togo Events</h1>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Empowering Python Developers</h1>
-            <p class="hero-subtitle">Join a thriving community of Python enthusiasts in Togo, learn, collaborate, and
-                grow your skills.</p>
-            <div class="hero-cta">
-                <a href="#" class="btn-primary">Get Involved</a>
-                <a href="#" class="btn-secondary">Learn More</a>
-            </div>
+        <div class="event-tabs">
+            <button class="event-tab active" data-tab="all">All Events</button>
+            <button class="event-tab" data-tab="upcoming">Upcoming Events</button>
+            <button class="event-tab" data-tab="ongoing">Ongoing Events</button>
+            <button class="event-tab" data-tab="past">Past Events</button>
         </div>
-    </section>
 
-    <!-- Our Story Section -->
-    <section class="section bg-light">
-        <h2 class="section-title">Our Story</h2>
-        <div class="grid">
-            <div class="card">
-                <p>Python Togo is a dynamic community dedicated to fostering Python development in Togo. We provide
-                    opportunities for networking, mentorship, and hands-on learning for developers of all levels.</p>
-            </div>
-            <div class="card">
-                <p>Python Togo is a dynamic community dedicated to fostering Python development in Togo. We provide
-                    opportunities for networking, mentorship, and hands-on learning for developers of all levels.</p>
-            </div>
-            <div class="card">
-                <p>Python Togo is a dynamic community dedicated to fostering Python development in Togo. We provide
-                    opportunities for networking, mentorship, and hands-on learning for developers of all levels.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Team Section -->
-    <section class="section">
-        <h2 class="section-title">Meet the Minds Behind Python Togo</h2>
-        <div class="grid">
-            <div class="card team-card">
-                <img src="/api/placeholder/200/200" alt="Team Member">
-                <h3>John Doe</h3>
-                <p>Position</p>
-            </div>
-            <div class="card team-card">
-                <img src="/api/placeholder/200/200" alt="Team Member">
-                <h3>John Doe</h3>
-                <p>Position</p>
-            </div>
-            <div class="card team-card">
-                <img src="/api/placeholder/200/200" alt="Team Member">
-                <h3>John Doe</h3>
-                <p>Position</p>
-            </div>
-            <div class="card team-card">
-                <img src="/api/placeholder/200/200" alt="Team Member">
-                <h3>John Doe</h3>
-                <p>Position</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Get Involved Section -->
-    <section class="section bg-light">
-        <h2 class="section-title">Get Involved</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-users fa-3x" style="color: var(--python-blue); margin-bottom: 1rem;"></i>
-                <h3>Attend Meetups</h3>
-                <p>Whether you're a beginner or an expert, there's a place for you in Python Togo</p>
-                <p>Connect with like-minded developers.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-chalkboard-teacher fa-3x" style="color: var(--python-blue); margin-bottom: 1rem;"></i>
-                <h3>Become a Mentor</h3>
-                <p>Share your knowledge and help others grow in their Python journey.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-code fa-3x" style="color: var(--python-blue); margin-bottom: 1rem;"></i>
-                <h3>Contribute to Open Source</h3>
-                <p>Collaborate on projects and make a real impact in the Python community.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Programs Section -->
-    <section class="section">
-        <h2 class="section-title">Our Programs</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">We offer a variety of programs to help you grow your Python
-            skills and connect with others.</p>
-        <div class="grid">
-            <div class="card">
-                <h3>Workshops & Training</h3>
-                <p>Hands-on coding sessions and bootcamps.</p>
-            </div>
-            <div class="card">
-                <h3>Hackathons</h3>
-                <p>Solve real-world problems with Python.</p>
-            </div>
-            <div class="card">
-                <h3>Mentorship Programs</h3>
-                <p>Get guidance from industry experts.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Swag Store Section -->
-    <section class="section bg-light">
-        <h2 class="section-title">Swag Store</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">Represent Python Togo and support our community by grabbing
-            official merchandise.</p>
-        <div class="grid">
-            <div class="card swag-item">
-                <img src="/api/placeholder/200/200" alt="T-Shirt">
-                <div>
-                    <h3>T-Shirt</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div style="display: flex; align-items: center; margin-top: 1rem;">
-                        <span style="text-decoration: line-through; color: gray; margin-right: 1rem;">5000 CFA</span>
-                        <span style="color: var(--python-blue); font-weight: bold;">3.500 CFA</span>
+        <div class="events-container">
+            <!-- Event Card 1 -->
+            <div class="event-card" data-category="upcoming">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Python Workshop" class="event-image">
+                <div class="event-details">
+                    <span class="event-category">Workshop</span>
+                    <h3 class="event-title">Python for Data Science</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>25 March 2025</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>09:00 - 17:00</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Tech Hub, Lomé</span>
+                        </div>
                     </div>
-                    <button
-                        style="background-color: var(--python-blue); color: white; border: none; padding: 0.5rem 1rem; margin-top: 1rem; border-radius: 5px;">Buy
-                        Swag</button>
+                    <p class="event-description">
+                        Learn how to use Python for data analysis and visualization. This workshop covers pandas, numpy,
+                        and matplotlib.
+                    </p>
+                    <div class="event-buttons">
+                        <a href="#" class="btn btn-primary event-details-btn" data-event="event1">View Details</a>
+                        <a href="#" class="btn btn-secondary">Register</a>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <h3>Image Gallery</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+            <!-- Event Card 2 -->
+            <div class="event-card" data-category="ongoing">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Python Conference"
+                    class="event-image">
+                <div class="event-details">
+                    <span class="event-category">Conference</span>
+                    <h3 class="event-title">PyCon Togo 2025</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>6-8 March 2025</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>All day</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Hotel 2 Février, Lomé</span>
+                        </div>
+                    </div>
+                    <p class="event-description">
+                        The biggest Python conference in Togo. Three days of talks, workshops, and networking.
+                    </p>
+                    <div class="event-buttons">
+                        <a href="#" class="btn btn-primary event-details-btn" data-event="event2">View Details</a>
+                        <a href="#" class="btn btn-secondary">Register</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Card 3 -->
+            <div class="event-card" data-category="upcoming">
+                <img src="/static/images/events/pyday2024.JPG" alt="Django Meetup" class="event-image">
+                <div class="event-details">
+                    <span class="event-category">Meetup</span>
+                    <h3 class="event-title">Django Web Development</h3>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>15 April 2025</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>18:00 - 20:00</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Coworking Space, Lomé</span>
+                        </div>
+                    </div>
+                    <p class="event-description">
+                        Learn how to build web applications using Django, the Python web framework.
+                    </p>
+                    <div class="event-buttons">
+                        <a href="#" class="btn btn-primary event-details-btn" data-event="event3">View Details</a>
+                        <a href="#" class="btn btn-secondary">Register</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div>
-            <img src="/api/placeholder/100/50" alt="Python Togo Logo" style="margin-bottom: 1rem;">
-            <p>© 2025 Python Community Lomé. All rights reserved.</p>
+    <!-- Event Detail Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+
+            <!-- Event details will be loaded here -->
+            <div id="eventDetailContent">
+                <div class="event-detail-header"
+                    style="background-image: url('/static/images/events/pyday2024.JPG')">
+                    <div class="event-header-overlay">
+                        <span class="event-category">Workshop</span>
+                        <h2 class="event-title">Python for Data Science</h2>
+                        <div class="event-meta">
+                            <div class="event-meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>25 March 2025</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>09:00 - 17:00</span>
+                            </div>
+                            <div class="event-meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Tech Hub, Lomé</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-detail-content">
+                    <div class="event-time-location">
+                        <div class="event-info-group">
+                            <h3 class="event-info-title">Date & Time</h3>
+                            <p>25 March 2025</p>
+                            <p>09:00 - 17:00</p>
+                        </div>
+                        <div class="event-info-group">
+                            <h3 class="event-info-title">Location</h3>
+                            <p>Tech Hub, Lomé</p>
+                            <p>123 Main Street</p>
+                        </div>
+                    </div>
+
+                    <div class="tabs">
+                        <div class="tab active" data-tab="description">Description</div>
+                        <div class="tab" data-tab="schedule">Schedule</div>
+                        <div class="tab" data-tab="speakers">Speakers</div>
+                        <div class="tab" data-tab="register">Register</div>
+                    </div>
+
+                    <div id="description" class="tab-content active">
+                        <h3>About This Event</h3>
+                        <p>Learn how to use Python for data analysis and visualization in this full-day workshop. This
+                            workshop is perfect for beginners who want to get started with data science using Python.
+                        </p>
+                        <p>Topics covered include:</p>
+                        <ul>
+                            <li>Introduction to Python for data analysis</li>
+                            <li>Data manipulation with pandas</li>
+                            <li>Numerical computing with numpy</li>
+                            <li>Data visualization with matplotlib and seaborn</li>
+                            <li>Introduction to machine learning with scikit-learn</li>
+                        </ul>
+                        <p>Participants should bring their own laptops with Python installed. We will provide
+                            instructions for setting up your environment before the workshop.</p>
+                    </div>
+
+                    <div id="schedule" class="tab-content">
+                        <h3>Workshop Schedule</h3>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">09:00 - 09:30</div>
+                            <div class="schedule-details">
+                                <h4>Registration and Setup</h4>
+                                <p>Get set up with the workshop environment and materials</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">09:30 - 11:00</div>
+                            <div class="schedule-details">
+                                <h4>Introduction to Python for Data Science</h4>
+                                <p>Overview of Python and its data science ecosystem</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">11:00 - 12:30</div>
+                            <div class="schedule-details">
+                                <h4>Data Manipulation with Pandas</h4>
+                                <p>Learn how to load, clean, and transform data</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">12:30 - 13:30</div>
+                            <div class="schedule-details">
+                                <h4>Lunch Break</h4>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">13:30 - 15:00</div>
+                            <div class="schedule-details">
+                                <h4>Data Visualization</h4>
+                                <p>Creating effective visualizations with matplotlib and seaborn</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">15:00 - 16:30</div>
+                            <div class="schedule-details">
+                                <h4>Introduction to Machine Learning</h4>
+                                <p>Basic ML concepts and implementing simple models with scikit-learn</p>
+                            </div>
+                        </div>
+
+                        <div class="schedule-item">
+                            <div class="schedule-time">16:30 - 17:00</div>
+                            <div class="schedule-details">
+                                <h4>Q&A and Wrap-up</h4>
+                                <p>Final questions and next steps</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="speakers" class="tab-content">
+                        <h3>Workshop Instructors</h3>
+
+                        <div class="speakers-grid">
+                            <div class="speaker-card">
+                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Speaker"
+                                    class="speaker-image">
+                                <h4 class="speaker-name">Dr. Kodjo Adade</h4>
+                                <p class="speaker-title">Data Scientist, University of Lomé</p>
+                            </div>
+
+                            <div class="speaker-card">
+                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Speaker"
+                                    class="speaker-image">
+                                <h4 class="speaker-name">Ama Sika</h4>
+                                <p class="speaker-title">Python Developer, Tech Togo</p>
+                            </div>
+
+                            <div class="speaker-card">
+                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Speaker"
+                                    class="speaker-image">
+                                <h4 class="speaker-name">Pascal Mensah</h4>
+                                <p class="speaker-title">ML Engineer, AI Africa</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="register" class="tab-content">
+                        <h3>Register for this Event</h3>
+
+                        <form class="registration-form">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Organization</label>
+                                <input type="text" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Python Experience Level</label>
+                                <select class="form-input">
+                                    <option>Beginner</option>
+                                    <option>Intermediate</option>
+                                    <option>Advanced</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">What do you hope to learn?</label>
+                                <textarea class="form-input" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="form-submit">Register Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <h4 style="margin-bottom: 1rem;">Quick Links</h4>
-            <a href="#">Home</a><br>
-            <a href="#">Our Story</a><br>
-            <a href="#">Get Involved</a>
-        </div>
-        <div>
-            <h4 style="margin-bottom: 1rem;">Legal</h4>
-            <a href="#">Privacy Policy</a><br>
-            <a href="#">Terms of Service</a><br>
-            <a href="#">Cookies Settings</a>
-        </div>
-    </footer>
+    </div>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navbarMenu = document.querySelector('.navbar-menu');
+        // Tab switching for event categories
+        document.querySelectorAll('.event-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.event-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
 
-        mobileMenuToggle.addEventListener('click', () => {
-            navbarMenu.classList.toggle('show-mobile-menu');
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                const category = tab.getAttribute('data-tab');
+
+                // Show all events if "all" is selected
+                if (category === 'all') {
+                    document.querySelectorAll('.event-card').forEach(card => {
+                        card.style.display = 'block';
+                    });
+                } else {
+                    // Hide all events
+                    document.querySelectorAll('.event-card').forEach(card => {
+                        if (card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('eventModal');
+        const closeBtn = document.querySelector('.modal-close');
+
+        // Open modal when "View Details" is clicked
+        document.querySelectorAll('.event-details-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close modal when X is clicked
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Tab switching within modal
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Hide all tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+
+                // Show the corresponding tab content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
         });
     </script>
 </body>

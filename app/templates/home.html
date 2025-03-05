@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head %}
-<script src="{{ url_for('static', path='JS/home.js') }}" defer></script>
+
 <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
 
 {% endblock %}
@@ -11,6 +11,7 @@
 
 
 {% endblock %}
+
 
 {% block content %}
 <div class="hero-slider">
@@ -30,13 +31,16 @@
         <div class="slider-wrapper">
             <div class="slider">
                 <div class="slide">
-                    <img src="{{ url_for('static', path='images/pytg/WUL_0454(1).jpg') }}" alt="Python Togo Community">
+                    <img src="{{ url_for('static', path='images/gallery/WUL_0454(1).jpg') }}" alt="Python Togo Community">
                 </div>
                 <div class="slide">
-                    <img src="{{ url_for('static', path='images/pytg/WUL_0436.jpg') }}" alt="Python Togo Workshop">
+                    <img src="{{ url_for('static', path='images/gallery/WUL_0436.jpg') }}" alt="Python Togo Workshop">
                 </div>
                 <div class="slide">
-                    <img src="{{ url_for('static', path='images/pytg/WUL_0456.jpg') }}" alt="Python Togo Meetup">
+                    <img src="{{ url_for('static', path='images/gallery/WUL_0456.jpg') }}" alt="Python Togo Meetup">
+                </div>
+                <div class="slide">
+                    <img src="{{ url_for('static', path='images/gallery/pycon.jpeg') }}" alt="Python Togo Meetup">
                 </div>
             </div>
         </div>
@@ -57,7 +61,7 @@
     </section>
 </div>
 
-<section class="who-we-are">
+<section class="who-we-are" id="story">
 
     <div class="who-we-are-container">
         <div class="left-column">
@@ -72,7 +76,7 @@
     </div>
 
 
-    <img src="{{ url_for('static', path='images/pytg/groupe_picture_accra.jpeg') }}" alt="Python Togo Community"
+    <img src="{{ url_for('static', path='images/gallery/groupe_picture_accra.jpeg') }}" alt="Python Togo Community"
         class="community-image">
 </section>
 
@@ -81,11 +85,10 @@
 <section class="partners-section">
     <div class="partners-title">Our Parteners</div>
     <div class="partners-logos">
-        <img src="{{ url_for('static', path='images/parteners/psf-logo.png') }}" alt="PSF" class="partner-logo">
-        <img src="{{ url_for('static', path='images/parteners/hyver.png') }}" alt="hyver" class="partner-logo tcd-logo">
-        <img src="{{ url_for('static', path='images/parteners/tcd.png') }}" alt="tcd" class="partner-logo hyver-logo">
-        <img src="{{ url_for('static', path='images/parteners/amz_girls.png') }}" alt="amz_girls"
-            class="partner-logo amz_girls-logo">
+        {% for partner in  partners %}
+        <img src="{{ url_for('static', path='images/parteners/' + partner.logo_url) }}" alt="{{ partner.name }}" class="partner-logo  {{ partner.symbol }}">
+        
+        {% endfor %}
     </div>
 </section>
 
@@ -100,99 +103,34 @@
     </div>
 
     <div class="team-grid">
-        <div class="team-member">
-            <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/wass.jpeg') }}" alt="Photo de profil">
-            </div>
-            <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
-            </div>
-        </div>
 
+        {% for member in teams %}
         <div class="team-member">
             <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/') }}" alt="Photo de profil">
+                <img src="{{ url_for('static', path='images/team/' + member.image) }}" alt="Photo de profil">
             </div>
             <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
+                <div class="team-member-name">{{ member.name }}</div>
+                <div class="team-member-position">{{ member.role }}</div>
             </div>
         </div>
+        {% endfor %}
 
-        <div class="team-member">
-            <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/') }}" alt="Photo de profil">
-            </div>
-            <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
-            </div>
-        </div>
-
-        <div class="team-member">
-            <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/') }}" alt="Photo de profil">
-            </div>
-            <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
-            </div>
-        </div>
-
-        <div class="team-member">
-            <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/') }}" alt="Photo de profil">
-            </div>
-            <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
-            </div>
-        </div>
-
-        <div class="team-member">
-            <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/') }}" alt="Photo de profil">
-            </div>
-            <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
-            </div>
-        </div>
-
-        <div class="team-member">
-            <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/') }}" alt="Photo de profil">
-            </div>
-            <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
-            </div>
-        </div>
-
-        <div class="team-member">
-            <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/') }}" alt="Photo de profil">
-            </div>
-            <div class="team-member-info">
-                <div class="team-member-name">John Doe</div>
-                <div class="team-member-position">Poste</div>
-            </div>
-        </div>
     </div>
 </section>
 
 <!-- Get involve -->
-<section class="community-section-container">
+<section class="community-section-container" >
     <div class="community-section">
         <div class="community-content">
-            <div class="get-involved-tag">Get Involved</div>
+            <div class="get-involved-tag" id="involve">Get Involved</div>
             <h1 class="community-title">Whether you're a beginner or an expert, there's a place for you in Python Togo
             </h1>
             <button class="contact-button">Contact Us</button>
         </div>
 
         <div class="community-options">
+            <!-- <div class="vertical-line"></div> -->
             <div class="option">
                 <div class="option-icon">
                     <img src="{{ url_for('static', path='images/python.svg') }}" alt="Meetups Icon">
@@ -217,6 +155,7 @@
                 <div class="option-icon">
                     <img src="{{ url_for('static', path='images/python.svg') }}" alt="Open Source Icon">
                 </div>
+                
                 <div class="option-content">
                     <h3>Contribute to Open Source</h3>
                     <p>Collaborate on projects.</p>
@@ -229,14 +168,14 @@
 <!-- our program -->
 
 <section class="programs-section">
-    <div class="programs-tag">Our Programs</div>
+    <div class="programs-tag" id="initiatives">Our Programs</div>
     <h1 class="programs-title">We offer a variety of programs to help you grow your Python skills and connect with
         others.</h1>
 
     <div class="programs-grid">
         <div class="program-card">
             <div class="program-illustration">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmZmYwZTAiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCwzMCkiPgogICAgPHBhdGggZD0iTTAgMEgzMDBWMjUwSDBaIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMTAiIGZpbGw9IiNmNTAiLz4KICAgIDxjaXJjbGUgY3g9IjI3NSIgY3k9IjI1IiByPSIxMCIgZmlsbD0iIzA1ZiIvPgogICAgPHBhdGggZD0iTTUwIDEwMEMxMDAgNjAgMjAwIDgwIDI1MCAxMDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDAsMTUwKSI+CiAgICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iMzAiIHI9IjMwIiBmaWxsPSIjZmM2Ii8+CiAgICAgIDxyZWN0IHg9IjAiIHk9IjYwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjYWZmIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4="
+                <img src="{{ url_for('static', path='images/workshops_training.png') }}"
                     alt="Workshops & Training Illustration">
             </div>
             <h3 class="program-title">Workshops & Training</h3>
@@ -245,8 +184,7 @@
 
         <div class="program-card">
             <div class="program-illustration">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmNWZmZTAiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCw1MCkiPgogICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCw1MCkiPgogICAgICA8Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyMCIgZmlsbD0iIzNhZiIvPgogICAgICA8Y2lyY2xlIGN4PSIxMDAiIGN5PSI3NSIgcj0iMjAiIGZpbGw9IiNmNmEiLz4KICAgICAgPGNpcmNsZSBjeD0iMTc1IiBjeT0iMjUiIHI9IjIwIiBmaWxsPSIjZmE2Ii8+CiAgICAgIDxjaXJjbGUgY3g9IjI1MCIgY3k9Ijc1IiByPSIyMCIgZmlsbD0iIzZhZiIvPgogICAgPC9nPgogICAgPHBhdGggZD0iTTUwIDE1MEwxMDAgMTAwTDE1MCAxNTBMMjAwIDEwMEwyNTAgMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPHRleHQgeD0iMTUwIiB5PSIyNTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMzMzMiPkNvbGxhYm9yYXRlPC90ZXh0PgogIDwvZz4KPC9zdmc+"
-                    alt="Hackathons Illustration">
+                <img src="{{ url_for('static', path='images/hackathons.png') }}" alt="Hackathons Illustration">
             </div>
             <h3 class="program-title">Hackathons</h3>
             <p class="program-description">Solve real-world problems with Python.</p>
@@ -254,7 +192,7 @@
 
         <div class="program-card">
             <div class="program-illustration">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjQwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmZmUwZTAiLz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MCw1MCkiPgogICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDAsMzApIj4KICAgICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDAiIGZpbGw9IiM2YWYiLz4KICAgICAgPHJlY3QgeD0iMCIgeT0iMTAwIiB3aWR0aD0iMTAwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjYWZmIi8+CiAgICA8L2c+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyMDAsMTAwKSByb3RhdGUoMTUpIj4KICAgICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2ZhNiIvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+"
+                <img src="{{ url_for('static', path='images/mentorship_programs.png') }}"
                     alt="Mentorship Programs Illustration">
             </div>
             <h3 class="program-title">Mentorship Programs</h3>
@@ -262,5 +200,40 @@
         </div>
     </div>
 </section>
+<!-- shop -->
+
+<section class="shop">
+    <div class="page-header">
+        <h1>Represent Python Togo</h1>
+        <p>Support our community by grabbing official Python Togo merchandise. Every purchase helps us grow!</p>
+    </div>
+
+    <div class="product-container">
+        <div class="product-image">
+            <div id="product-images"></div>
+            <div class="slider-dots" id="slider-dots"></div>
+        </div>
+
+        <div class="product-details">
+            <h2 class="product-title" id="product-title"></h2>
+            <p class="product-description" id="product-description"></p>
+            <div class="product-price">
+                <span id="product-price"></span>
+                <span class="original-price" id="original-price"></span>
+            </div>
+            <button class="buy-button" id="buy-button">Buy Swag</button>
+        </div>
+    </div>
+
+    <div class="navigation-arrows">
+        <button class="navigation-arrow prev">←</button>
+        <button class="navigation-arrow next">→</button>
+        
+    </div>
+</section>
+
+
+<script src="{{ url_for('static', path='JS/home.js') }}"></script>
+<script src="{{ url_for('static', path='JS/shop.js') }}"></script>
 
 {% endblock %}

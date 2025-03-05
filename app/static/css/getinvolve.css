@@ -1,5 +1,6 @@
 .community-section-container{
     background-color: #ecf4e9;
+    margin-top: 10px;
 }
 
 .community-section {
@@ -54,6 +55,15 @@
     flex-direction: column;
     gap: 1.5rem;
 }
+ /* .vertical-line {
+     position: absolute;
+     left: 20px;
+     top: 0;
+     bottom: 0;
+     width: 2px;
+     background-color: rgba(0, 0, 0, 0.2);
+     height: 100%;
+ } */
 
 .option {
     display: flex;

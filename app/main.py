@@ -1,13 +1,21 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, PlainTextResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+
+
+from .database  import (
+    get_all_events,
+    get_swags,
+    get_teams_members,
+    get_event_by_id,
+    get_parteners,
+    galleries,
+)
 from datetime import datetime
 import pycountry
-import os   
-
-
-
+import os
+import json
 
 
 app = FastAPI()
@@ -17,6 +25,7 @@ static_folder = os.path.join(os.path.dirname(__file__), "static")
 templates_folder = os.path.join(os.path.dirname(__file__), "templates")
 app.mount("/static", StaticFiles(directory=static_folder), name="static")
 templates = Jinja2Templates(directory=templates_folder)
+teams_members = get_teams_members()
 
 year = datetime.now().year
 
@@ -31,14 +40,15 @@ languages = [
 ]
 
 
-
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="home.html",
-        context={"year": year, "languages": languages},
+        context={"year": year, "languages": languages, "teams": teams_members, "partners": get_parteners()},
     )
+
+
 @app.get("/about", response_class=HTMLResponse)
 def about(request: Request):
     return templates.TemplateResponse(
@@ -65,6 +75,28 @@ def shop_swag(request: Request):
         context={"year": year, "languages": languages},
     )
 
+@app.get("/gallery")
+def gallery(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="gallery.html",
+        context={"year": year, "languages": languages, "galleries": galleries},
+    )
+
+@app.get("/api/shop/swags", response_class=JSONResponse)
+def swags(request: Request):
+   
+    return get_swags()
+
+@app.get("/api/events", response_class=JSONResponse)
+async def get_events(request: Request):
+    return get_all_events()
+
+@app.get("/api/events/{eventId}", response_class=JSONResponse)
+async def get_event(eventId: int):
+    return get_event_by_id(eventId)
+
+
 
 @app.get("/contact", response_class=HTMLResponse)
 def contact(request: Request):
@@ -78,5 +110,4 @@ def contact(request: Request):
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
-   
+    uvicorn.run(app, host="127.0.0.1", port=8000)
