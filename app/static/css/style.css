@@ -17,11 +17,14 @@ body {
 /* Header styles */
 .header {
     display: flex;
+    position: fixed;
+    width: 100%;
     justify-content: space-around;
     align-items: center;
     padding: 15px 40px;
     background-color: #ecf4e9;
     border-bottom: 1px solid #c4e6b7;
+    z-index: 1000;
 }
 
 /* Logo styles (used in both header and footer) */
