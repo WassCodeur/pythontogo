@@ -264,7 +264,7 @@ galleries = [
         "height": random.randrange(30, 60),
     },
     {
-        "url": "WUL_0434 (1).jpg",
+        "url": "WUL_0434.jpg",
         "caption": "Keynote presentation",
         "height": random.randrange(30, 60),
     },
