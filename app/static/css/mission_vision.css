@@ -265,7 +265,7 @@
             opacity: 0.9;
         }
 
-        .cta-button {
+        .joinus {
             display: inline-block;
             background-color: var(--secondary-yellow);
             color: var(--text-dark);
@@ -276,11 +276,8 @@
             transition: background-color 0.3s;
         }
 
-        .cta-button:hover {
-            background-color: var(--primary-green);
-            ;
-        }
-
+      
+       
         /* Responsive Styles */
         @media (max-width: 991px) {
             .mission-boxes {
