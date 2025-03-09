@@ -146,6 +146,16 @@ teams_members = [
         "image": "pakou.jpg",
     },
     {
+        "name": " Geoffrey LOGOVI",
+        "role": "Executive Director | co-founder",
+        "image": "geoffrey.png",
+    },
+    {
+        "name": "Parfait TOKE",
+        "role": "General Councillor | co-founder",
+        "image": "parfait.jpg",
+    },
+    {
         "name": "Laboré kodjo AGBETSIASSI",
         "role": "Education, Training and Mentoring Managers | co-founder",
         "image": "labore.JPG",
@@ -157,12 +167,17 @@ teams_members = [
     },
     {
         "name": "Irène AMEDJI",
-        "role": "Partnerships and External Relations Advisor | Co-founder",
+        "role": "Head of Communications and Design | Co-founder",
         "image": "irene.jpeg",
     },
     {
-        "name": "Samira AMADOU",
+        "name": "Yves HOUANGASSI",
         "role": "Head of Communications and Design | Co-founder",
+        "image": "yves.png",
+    },
+    {
+        "name": "Samira AMADOU",
+        "role": "Partnerships and External Relations Advisor | Co-founder",
         "image": "samira.jpeg",
     },
     {
@@ -178,7 +193,7 @@ teams_members = [
     {
         "name": "Waficah OLOSSOUMARE",
         "role": "Deputy Treasurer | Co-founder",
-        "image": "waficah.jpeg",
+        "image": "waficah2.jpeg",
     },
     {
         "name": "Akinwumi OGUNDIPE",
