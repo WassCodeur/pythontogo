@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/coc.css') }}">
+{% endblock %}
+
+{% block title %} Code of Conduct
+{% endblock %}
+
+
+{% block content %}
+
+<section class="coc-hero">
+    <h1>Code of Conduct</h1>
+    <p>Our guidelines to ensure a respectful, inclusive, and collaborative environment within the Python Togo
+        community.</p>
+    <a href="#" class="green-button">Contact Us</a>
+</section>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="content-card">
+        <div class="highlight">
+            <p>The Python Togo community is committed to providing a welcoming, respectful, and inclusive
+                environment for everyone, regardless of gender, sexual orientation, disability, physical appearance,
+                body size, race, religion, or technical experience.</p>
+        </div>
+
+        <h2>Our Commitment</h2>
+        <p>In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge
+            to make participation in our community a harassment-free experience for everyone, regardless of age,
+            body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and
+            expression, level of experience, education, socio-economic status, nationality, personal appearance,
+            race, religion, or sexual identity and orientation.</p>
+
+        <h2>Our Standards</h2>
+        <p>Examples of behavior that contributes to creating a positive environment include:</p>
+        <ul>
+            <li>Using welcoming and inclusive language</li>
+            <li>Being respectful of differing viewpoints and experiences</li>
+            <li>Gracefully accepting constructive criticism</li>
+            <li>Focusing on what is best for the community</li>
+            <li>Showing empathy towards other community members</li>
+        </ul>
+
+        <p>Examples of unacceptable behavior include:</p>
+        <ul>
+            <li>The use of sexualized language or imagery and unwelcome sexual attention or advances</li>
+            <li>Trolling, insulting/derogatory comments, and personal or political attacks</li>
+            <li>Public or private harassment</li>
+            <li>Publishing others' private information, such as a physical or electronic address, without explicit
+                permission</li>
+            <li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
+        </ul>
+
+        <h2>Responsibilities of Moderators</h2>
+        <p>Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior. They
+            will take appropriate and fair corrective action in response to any behavior that they deem
+            inappropriate, threatening, offensive, or harmful.</p>
+
+        <h2>Scope</h2>
+        <p>This Code of Conduct applies within all Python Togo community spaces, including but not limited to:</p>
+        <ul>
+            <li>In-person meetings and events</li>
+            <li>Discussions on online forums, mailing lists, and social media</li>
+            <li>Collaborative projects and code repositories</li>
+            <li>Workshops and training sessions</li>
+        </ul>
+
+        <h2>Enforcement</h2>
+        <p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community
+            leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and
+            fairly.</p>
+
+        <p>All community leaders are obligated to respect the privacy and security of the reporter of any incident.
+        </p>
+
+        <h2>Enforcement Guidelines</h2>
+        <p>Community leaders will follow these Community Impact Guidelines in determining the consequences for any
+            action they deem in violation of this Code of Conduct:</p>
+
+        <h3>1. Correction</h3>
+        <p><strong>Community Impact:</strong> Use of inappropriate language or other behavior deemed unprofessional
+            or unwelcome in the community.</p>
+        <p><strong>Consequence:</strong> A private, written warning from community leaders, providing clarity around
+            the nature of the violation and an explanation of why the behavior was inappropriate. A public apology
+            may be requested.</p>
+
+        <h3>2. Warning</h3>
+        <p><strong>Community Impact:</strong> A violation through a single incident or series of actions.</p>
+        <p><strong>Consequence:</strong> A warning with consequences for continued behavior. No interaction with the
+            people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a
+            specified period of time.</p>
+
+        <h3>3. Temporary Ban</h3>
+        <p><strong>Community Impact:</strong> A serious violation of community standards, including sustained
+            inappropriate behavior.</p>
+        <p><strong>Consequence:</strong> A temporary ban from any sort of interaction or public communication with
+            the community for a specified period of time. No public or private interaction with the people involved
+            is allowed during this period.</p>
+
+        <h3>4. Permanent Ban</h3>
+        <p><strong>Community Impact:</strong> Demonstrating a pattern of violation of community standards, including
+            sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of
+            classes of individuals.</p>
+        <p><strong>Consequence:</strong> A permanent ban from any sort of public interaction within the community.
+        </p>
+
+        <div class="contact-info">
+            <h2>Contact</h2>
+            <p>If you are the subject of or witness to any violations of this Code of Conduct, please contact our
+                moderation team:</p>
+            <p>📧 Email: <strong>pydevstogo@gmail.com</strong></p>
+            <p>☎️ Phone: <strong>+228 92 55 59 87</strong></p>
+            <a href="#" class="green-button">Contact Us</a>
+        </div>
+
+        <h2>Attribution</h2>
+        <p>This Code of Conduct is adapted from the <a
+                href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html"
+                style="color: var(--primary-green);">Contributor Covenant</a>, version 2.0.</p>
+    </div>
+</div>
+
+{% block scripts %}
+<script src="{{ url_for('static', path='JS/events.js') }}"></script>
+
+{% endblock %}
+
+{% endblock %}

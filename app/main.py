@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
-from .database  import (
+from database  import (
     get_all_events,
     get_swags,
     get_teams_members,
@@ -66,6 +66,13 @@ def events(request: Request):
         context={"year": year, "languages": languages},
     )
 
+@app.get("/coc")
+def coc(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="coc.html",
+        context={"year": year, "languages": languages},
+    )
 
 @app.get("/shop", response_class=HTMLResponse)
 def shop_swag(request: Request):

@@ -4,780 +4,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Togo - Events</title>
+    <title>Code of Conduct - Python Togo</title>
     <style>
         :root {
-            --primary: #4CAF50;
-            --primary-dark: #3e8e41;
-            --secondary: #646464;
-            --light-gray: #f5f5f5;
-            --dark-gray: #333;
-            --white: #ffffff;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --primary-green: #27ae60;
+            --secondary-green: #e8f5e9;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --background-light: #f5f5f5;
+            --background-white: #ffffff;
+            --accent-yellow: #ffd700;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         body {
-            font-family: Arial, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--background-white);
             line-height: 1.6;
-            color: var(--dark-gray);
-            background-color: #f9f9f9;
         }
 
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .sign-in-btn {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+            background-color: var(--background-light);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Main Content */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 2rem 1rem;
         }
 
         .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
             text-align: center;
-            color: var(--dark-gray);
+            margin-bottom: 2.5rem;
+            color: var(--text-dark);
             position: relative;
         }
 
         .section-title::after {
-            content: '';
+            content: "";
             display: block;
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary);
-            margin: 15px auto;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-green);
+            margin: 0.5rem auto 0;
         }
 
-        .event-tabs {
+        .content-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--secondary-green);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
+            color: var(--text-dark);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        ul,
+        ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            color: var(--text-light);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            background-color: var(--secondary-green);
+            border-left: 4px solid var(--primary-green);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .contact-info {
+            background-color: var(--secondary-green);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .green-button {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--background-light);
+            padding: 2rem 5%;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 30px;
+        }
+
+        .footer-nav {
             display: flex;
             justify-content: center;
-            margin-bottom: 30px;
-            gap: 15px;
-            flex-wrap: wrap;
+            list-style: none;
+            margin-bottom: 1rem;
         }
 
-        .event-tab {
-            padding: 10px 20px;
-            background-color: var(--white);
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-weight: bold;
-            box-shadow: var(--box-shadow);
+        .footer-nav li {
+            margin: 0 1rem;
         }
 
-        .event-tab.active {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-
-        .events-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .event-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: transform 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .event-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .event-details {
-            padding: 20px;
-        }
-
-        .event-category {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
-
-        .event-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .event-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
-            color: var(--secondary);
-        }
-
-        .event-meta-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .event-description {
-            margin-bottom: 20px;
-            color: var(--secondary);
-        }
-
-        .event-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: background-color 0.2s ease;
+        .footer-nav a {
             text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .btn-secondary {
-            background-color: var(--light-gray);
-            color: var(--dark-gray);
-        }
-
-        .btn-secondary:hover {
-            background-color: #e0e0e0;
-        }
-
-        /* Event details modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .modal-content {
-            background-color: var(--white);
-            width: 90%;
-            max-width: 900px;
-            margin: 50px auto;
-            border-radius: var(--border-radius);
-            position: relative;
-            animation: modalFadeIn 0.3s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .modal-close {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .event-detail-header {
-            background-size: cover;
-            background-position: center;
-            height: 300px;
-            position: relative;
-        }
-
-        .event-header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7));
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            color: var(--white);
-        }
-
-        .event-detail-content {
-            padding: 30px;
-        }
-
-        .event-time-location {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .event-info-group {
-            flex: 1;
-        }
-
-        .event-info-title {
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .tabs {
-            display: flex;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 30px;
-        }
-
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-        }
-
-        .tab.active {
-            border-bottom-color: var(--primary);
-            font-weight: bold;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Schedule styling */
-        .schedule-item {
-            display: flex;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .schedule-time {
-            width: 100px;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .schedule-details {
-            flex: 1;
-        }
-
-        /* Speakers styling */
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .speaker-card {
-            text-align: center;
-        }
-
-        .speaker-image {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .speaker-name {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .speaker-title {
-            color: var(--secondary);
+            color: var(--text-dark);
             font-size: 0.9rem;
         }
 
-        /* Registration form */
-        .registration-form {
-            max-width: 500px;
-            margin: 0 auto;
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .social-links a {
+            margin: 0 0.5rem;
+            color: var(--text-dark);
+            text-decoration: none;
         }
 
-        .form-label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-light);
         }
 
-        .form-input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-        }
-
-        .form-submit {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: var(--border-radius);
-            width: 100%;
-        }
-
-        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .events-container {
-                grid-template-columns: 1fr;
-            }
-
-            .event-time-location {
+            .navbar {
                 flex-direction: column;
-                gap: 20px;
+                padding: 1rem;
             }
 
-            .schedule-item {
-                flex-direction: column;
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
-            .schedule-time {
-                margin-bottom: 10px;
+            .nav-links li {
+                margin: 0.5rem;
             }
 
-            .speakers-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="/api/placeholder/50/50" alt="Python Togo Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Get Involved</a></li>
+            <li><a href="#">Our Programs</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Events</a></li>
+        </ul>
+        <div>
+            <a href="#" class="sign-in-btn">Sign in</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Code of Conduct</h1>
+        <p>Our guidelines to ensure a respectful, inclusive, and collaborative environment within the Python Togo
+            community.</p>
+        <a href="#" class="green-button">Contact Us</a>
+    </section>
+
+    <!-- Main Content -->
     <div class="container">
-        <h1 class="section-title">Python Togo Events</h1>
-
-        <div class="event-tabs">
-            <button class="event-tab active" data-tab="all">All Events</button>
-            <button class="event-tab" data-tab="upcoming">Upcoming Events</button>
-            <button class="event-tab" data-tab="ongoing">Ongoing Events</button>
-            <button class="event-tab" data-tab="past">Past Events</button>
-        </div>
-
-        <div class="events-container">
-            <!-- Event Card 1 -->
-            <div class="event-card" data-category="upcoming">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Python Workshop" class="event-image">
-                <div class="event-details">
-                    <span class="event-category">Workshop</span>
-                    <h3 class="event-title">Python for Data Science</h3>
-                    <div class="event-meta">
-                        <div class="event-meta-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>25 March 2025</span>
-                        </div>
-                        <div class="event-meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>09:00 - 17:00</span>
-                        </div>
-                        <div class="event-meta-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Tech Hub, Lomé</span>
-                        </div>
-                    </div>
-                    <p class="event-description">
-                        Learn how to use Python for data analysis and visualization. This workshop covers pandas, numpy,
-                        and matplotlib.
-                    </p>
-                    <div class="event-buttons">
-                        <a href="#" class="btn btn-primary event-details-btn" data-event="event1">View Details</a>
-                        <a href="#" class="btn btn-secondary">Register</a>
-                    </div>
-                </div>
+        <div class="content-card">
+            <div class="highlight">
+                <p>The Python Togo community is committed to providing a welcoming, respectful, and inclusive
+                    environment for everyone, regardless of gender, sexual orientation, disability, physical appearance,
+                    body size, race, religion, or technical experience.</p>
             </div>
 
-            <!-- Event Card 2 -->
-            <div class="event-card" data-category="ongoing">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Python Conference"
-                    class="event-image">
-                <div class="event-details">
-                    <span class="event-category">Conference</span>
-                    <h3 class="event-title">PyCon Togo 2025</h3>
-                    <div class="event-meta">
-                        <div class="event-meta-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>6-8 March 2025</span>
-                        </div>
-                        <div class="event-meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>All day</span>
-                        </div>
-                        <div class="event-meta-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Hotel 2 Février, Lomé</span>
-                        </div>
-                    </div>
-                    <p class="event-description">
-                        The biggest Python conference in Togo. Three days of talks, workshops, and networking.
-                    </p>
-                    <div class="event-buttons">
-                        <a href="#" class="btn btn-primary event-details-btn" data-event="event2">View Details</a>
-                        <a href="#" class="btn btn-secondary">Register</a>
-                    </div>
-                </div>
+            <h2>Our Commitment</h2>
+            <p>In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge
+                to make participation in our community a harassment-free experience for everyone, regardless of age,
+                body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and
+                expression, level of experience, education, socio-economic status, nationality, personal appearance,
+                race, religion, or sexual identity and orientation.</p>
+
+            <h2>Our Standards</h2>
+            <p>Examples of behavior that contributes to creating a positive environment include:</p>
+            <ul>
+                <li>Using welcoming and inclusive language</li>
+                <li>Being respectful of differing viewpoints and experiences</li>
+                <li>Gracefully accepting constructive criticism</li>
+                <li>Focusing on what is best for the community</li>
+                <li>Showing empathy towards other community members</li>
+            </ul>
+
+            <p>Examples of unacceptable behavior include:</p>
+            <ul>
+                <li>The use of sexualized language or imagery and unwelcome sexual attention or advances</li>
+                <li>Trolling, insulting/derogatory comments, and personal or political attacks</li>
+                <li>Public or private harassment</li>
+                <li>Publishing others' private information, such as a physical or electronic address, without explicit
+                    permission</li>
+                <li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
+            </ul>
+
+            <h2>Responsibilities of Moderators</h2>
+            <p>Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior. They
+                will take appropriate and fair corrective action in response to any behavior that they deem
+                inappropriate, threatening, offensive, or harmful.</p>
+
+            <h2>Scope</h2>
+            <p>This Code of Conduct applies within all Python Togo community spaces, including but not limited to:</p>
+            <ul>
+                <li>In-person meetings and events</li>
+                <li>Discussions on online forums, mailing lists, and social media</li>
+                <li>Collaborative projects and code repositories</li>
+                <li>Workshops and training sessions</li>
+            </ul>
+
+            <h2>Enforcement</h2>
+            <p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community
+                leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and
+                fairly.</p>
+
+            <p>All community leaders are obligated to respect the privacy and security of the reporter of any incident.
+            </p>
+
+            <h2>Enforcement Guidelines</h2>
+            <p>Community leaders will follow these Community Impact Guidelines in determining the consequences for any
+                action they deem in violation of this Code of Conduct:</p>
+
+            <h3>1. Correction</h3>
+            <p><strong>Community Impact:</strong> Use of inappropriate language or other behavior deemed unprofessional
+                or unwelcome in the community.</p>
+            <p><strong>Consequence:</strong> A private, written warning from community leaders, providing clarity around
+                the nature of the violation and an explanation of why the behavior was inappropriate. A public apology
+                may be requested.</p>
+
+            <h3>2. Warning</h3>
+            <p><strong>Community Impact:</strong> A violation through a single incident or series of actions.</p>
+            <p><strong>Consequence:</strong> A warning with consequences for continued behavior. No interaction with the
+                people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a
+                specified period of time.</p>
+
+            <h3>3. Temporary Ban</h3>
+            <p><strong>Community Impact:</strong> A serious violation of community standards, including sustained
+                inappropriate behavior.</p>
+            <p><strong>Consequence:</strong> A temporary ban from any sort of interaction or public communication with
+                the community for a specified period of time. No public or private interaction with the people involved
+                is allowed during this period.</p>
+
+            <h3>4. Permanent Ban</h3>
+            <p><strong>Community Impact:</strong> Demonstrating a pattern of violation of community standards, including
+                sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of
+                classes of individuals.</p>
+            <p><strong>Consequence:</strong> A permanent ban from any sort of public interaction within the community.
+            </p>
+
+            <div class="contact-info">
+                <h2>Contact</h2>
+                <p>If you are the subject of or witness to any violations of this Code of Conduct, please contact our
+                    moderation team:</p>
+                <p>📧 Email: <strong>contact@pythontogo.org</strong></p>
+                <p>☎️ Phone: <strong>+228 XX XX XX XX</strong></p>
+                <a href="#" class="green-button">Contact Us</a>
             </div>
 
-            <!-- Event Card 3 -->
-            <div class="event-card" data-category="upcoming">
-                <img src="/static/images/events/pyday2024.JPG" alt="Django Meetup" class="event-image">
-                <div class="event-details">
-                    <span class="event-category">Meetup</span>
-                    <h3 class="event-title">Django Web Development</h3>
-                    <div class="event-meta">
-                        <div class="event-meta-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>15 April 2025</span>
-                        </div>
-                        <div class="event-meta-item">
-                            <i class="fas fa-clock"></i>
-                            <span>18:00 - 20:00</span>
-                        </div>
-                        <div class="event-meta-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Coworking Space, Lomé</span>
-                        </div>
-                    </div>
-                    <p class="event-description">
-                        Learn how to build web applications using Django, the Python web framework.
-                    </p>
-                    <div class="event-buttons">
-                        <a href="#" class="btn btn-primary event-details-btn" data-event="event3">View Details</a>
-                        <a href="#" class="btn btn-secondary">Register</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Event Detail Modal -->
-    <div id="eventModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close">&times;</span>
-
-            <!-- Event details will be loaded here -->
-            <div id="eventDetailContent">
-                <div class="event-detail-header"
-                    style="background-image: url('/static/images/events/pyday2024.JPG')">
-                    <div class="event-header-overlay">
-                        <span class="event-category">Workshop</span>
-                        <h2 class="event-title">Python for Data Science</h2>
-                        <div class="event-meta">
-                            <div class="event-meta-item">
-                                <i class="fas fa-calendar"></i>
-                                <span>25 March 2025</span>
-                            </div>
-                            <div class="event-meta-item">
-                                <i class="fas fa-clock"></i>
-                                <span>09:00 - 17:00</span>
-                            </div>
-                            <div class="event-meta-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Tech Hub, Lomé</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="event-detail-content">
-                    <div class="event-time-location">
-                        <div class="event-info-group">
-                            <h3 class="event-info-title">Date & Time</h3>
-                            <p>25 March 2025</p>
-                            <p>09:00 - 17:00</p>
-                        </div>
-                        <div class="event-info-group">
-                            <h3 class="event-info-title">Location</h3>
-                            <p>Tech Hub, Lomé</p>
-                            <p>123 Main Street</p>
-                        </div>
-                    </div>
-
-                    <div class="tabs">
-                        <div class="tab active" data-tab="description">Description</div>
-                        <div class="tab" data-tab="schedule">Schedule</div>
-                        <div class="tab" data-tab="speakers">Speakers</div>
-                        <div class="tab" data-tab="register">Register</div>
-                    </div>
-
-                    <div id="description" class="tab-content active">
-                        <h3>About This Event</h3>
-                        <p>Learn how to use Python for data analysis and visualization in this full-day workshop. This
-                            workshop is perfect for beginners who want to get started with data science using Python.
-                        </p>
-                        <p>Topics covered include:</p>
-                        <ul>
-                            <li>Introduction to Python for data analysis</li>
-                            <li>Data manipulation with pandas</li>
-                            <li>Numerical computing with numpy</li>
-                            <li>Data visualization with matplotlib and seaborn</li>
-                            <li>Introduction to machine learning with scikit-learn</li>
-                        </ul>
-                        <p>Participants should bring their own laptops with Python installed. We will provide
-                            instructions for setting up your environment before the workshop.</p>
-                    </div>
-
-                    <div id="schedule" class="tab-content">
-                        <h3>Workshop Schedule</h3>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:00 - 09:30</div>
-                            <div class="schedule-details">
-                                <h4>Registration and Setup</h4>
-                                <p>Get set up with the workshop environment and materials</p>
-                            </div>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">09:30 - 11:00</div>
-                            <div class="schedule-details">
-                                <h4>Introduction to Python for Data Science</h4>
-                                <p>Overview of Python and its data science ecosystem</p>
-                            </div>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">11:00 - 12:30</div>
-                            <div class="schedule-details">
-                                <h4>Data Manipulation with Pandas</h4>
-                                <p>Learn how to load, clean, and transform data</p>
-                            </div>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">12:30 - 13:30</div>
-                            <div class="schedule-details">
-                                <h4>Lunch Break</h4>
-                            </div>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">13:30 - 15:00</div>
-                            <div class="schedule-details">
-                                <h4>Data Visualization</h4>
-                                <p>Creating effective visualizations with matplotlib and seaborn</p>
-                            </div>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">15:00 - 16:30</div>
-                            <div class="schedule-details">
-                                <h4>Introduction to Machine Learning</h4>
-                                <p>Basic ML concepts and implementing simple models with scikit-learn</p>
-                            </div>
-                        </div>
-
-                        <div class="schedule-item">
-                            <div class="schedule-time">16:30 - 17:00</div>
-                            <div class="schedule-details">
-                                <h4>Q&A and Wrap-up</h4>
-                                <p>Final questions and next steps</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="speakers" class="tab-content">
-                        <h3>Workshop Instructors</h3>
-
-                        <div class="speakers-grid">
-                            <div class="speaker-card">
-                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Speaker"
-                                    class="speaker-image">
-                                <h4 class="speaker-name">Dr. Kodjo Adade</h4>
-                                <p class="speaker-title">Data Scientist, University of Lomé</p>
-                            </div>
-
-                            <div class="speaker-card">
-                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Speaker"
-                                    class="speaker-image">
-                                <h4 class="speaker-name">Ama Sika</h4>
-                                <p class="speaker-title">Python Developer, Tech Togo</p>
-                            </div>
-
-                            <div class="speaker-card">
-                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD" alt="Speaker"
-                                    class="speaker-image">
-                                <h4 class="speaker-name">Pascal Mensah</h4>
-                                <p class="speaker-title">ML Engineer, AI Africa</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="register" class="tab-content">
-                        <h3>Register for this Event</h3>
-
-                        <form class="registration-form">
-                            <div class="form-group">
-                                <label class="form-label">Full Name</label>
-                                <input type="text" class="form-input" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-input" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">Phone Number</label>
-                                <input type="tel" class="form-input">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">Organization</label>
-                                <input type="text" class="form-input">
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">Python Experience Level</label>
-                                <select class="form-input">
-                                    <option>Beginner</option>
-                                    <option>Intermediate</option>
-                                    <option>Advanced</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label">What do you hope to learn?</label>
-                                <textarea class="form-input" rows="3"></textarea>
-                            </div>
-
-                            <button type="submit" class="form-submit">Register Now</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            <h2>Attribution</h2>
+            <p>This Code of Conduct is adapted from the <a
+                    href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html"
+                    style="color: var(--primary-green);">Contributor Covenant</a>, version 2.0.</p>
         </div>
     </div>
 
-    <script>
-        // Tab switching for event categories
-        document.querySelectorAll('.event-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs
-                document.querySelectorAll('.event-tab').forEach(t => {
-                    t.classList.remove('active');
-                });
-
-                // Add active class to clicked tab
-                tab.classList.add('active');
-
-                const category = tab.getAttribute('data-tab');
-
-                // Show all events if "all" is selected
-                if (category === 'all') {
-                    document.querySelectorAll('.event-card').forEach(card => {
-                        card.style.display = 'block';
-                    });
-                } else {
-                    // Hide all events
-                    document.querySelectorAll('.event-card').forEach(card => {
-                        if (card.getAttribute('data-category') === category) {
-                            card.style.display = 'block';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                }
-            });
-        });
-
-        // Modal functionality
-        const modal = document.getElementById('eventModal');
-        const closeBtn = document.querySelector('.modal-close');
-
-        // Open modal when "View Details" is clicked
-        document.querySelectorAll('.event-details-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
-            });
-        });
-
-        // Close modal when X is clicked
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        });
-
-        // Close modal when clicking outside
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Tab switching within modal
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs
-                document.querySelectorAll('.tab').forEach(t => {
-                    t.classList.remove('active');
-                });
-
-                // Add active class to clicked tab
-                tab.classList.add('active');
-
-                // Hide all tab content
-                document.querySelectorAll('.tab-content').forEach(content => {
-                    content.classList.remove('active');
-                });
-
-                // Show the corresponding tab content
-                const tabId = tab.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="/api/placeholder/50/50" alt="Python Togo Logo">
+        </div>
+        <ul class="footer-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Get Involved</a></li>
+            <li><a href="#">Our Programs</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Events</a></li>
+        </ul>
+        <div class="social-links">
+            <a href="#" title="GitHub">GitHub</a>
+            <a href="#" title="Twitter">Twitter</a>
+            <a href="#" title="LinkedIn">LinkedIn</a>
+            <a href="#" title="Facebook">Facebook</a>
+        </div>
+        <p class="copyright">© 2025 Python Togo. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
