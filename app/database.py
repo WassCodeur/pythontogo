@@ -351,7 +351,7 @@ parteners = [
     {
         "name": "Africa Blockchain Community",
         "logo_url": "abc-logo-full.png",
-        "symbol": "tcd-logo",
+        "symbol": "abc-logo",
     },
     # {
     #     "name": "Python Software Foundation",

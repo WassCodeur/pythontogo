@@ -8,24 +8,30 @@
             --accent-yellow: #ffd700;
         }
 
-        .hero {
-            background-color: var(--white);
-            padding: 60px 0;
-            text-align: center;
+        .vision-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
-        .hero h1 {
+        .vision-hero {
+            background-color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        .vision-hero h1 {
             color: var(--primary-green);
             font-size: 2.5rem;
             margin-bottom: 20px;
             font-weight: 600;
         }
 
-        .hero p {
+        .vision-hero p {
             color: var(--text-light);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
+          
+            
         }
 
         .mission-boxes {
@@ -74,12 +80,12 @@
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -25px;
             left: 50%;
             transform: translateX(-50%);
             width: 50px;
             height: 3px;
-            background-color: var(--secondary-yellow);
+            background-color: var(--primary-green);
         }
 
         .section-subtitle {
@@ -221,7 +227,7 @@
         }
 
         .goal-number {
-            background-color: var(--secondary-yellow);
+            background-color: var(--secondary-green);
             color: var(--text-dark);
             width: 30px;
             height: 30px;
@@ -271,5 +277,43 @@
         }
 
         .cta-button:hover {
-            background-color: var(--primary-green);;
+            background-color: var(--primary-green);
+            ;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .mission-boxes {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .mission-box {
+                width: 100%;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vision-mission {
+                flex-direction: column;
+            }
+
+            .mission-boxes {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .mission-box {
+                width: 100%;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+
         }

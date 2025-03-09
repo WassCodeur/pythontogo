@@ -85,7 +85,8 @@
    }
 
    .hero-content {
-       margin: 150px;
+    margin-top: 150px;
+        margin-bottom: 70px;
    }
 
    .slider-container {
