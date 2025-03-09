@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 import random
 import json
@@ -127,6 +127,27 @@ events_data = [
         "location": "Coming Soon",
         "venue_address": "45 Rue des Entrepreneurs, Lomé",
         "image_url": "/static/images/events/django_meetup.webp",
+        "status": "upcoming",
+        "speakers": [],
+        "schedule": [],
+    },
+    {
+        "id": 4,
+        "title": "What is Python and Why Should You Learn It?",
+        "description": "What is Python and why should you learn it? In this workshop, we'll cover the basics of Python and how it can be used for data analysis, web development, and more.",
+        "short_description": "What is Python and why should you learn it? In this workshop, we'll cover the basics of Python.",
+        "category": "Blog",
+        "date": datetime.now(timezone.utc).strftime("%d %B %Y"),
+        "start_date": datetime.now(timezone.utc).strftime("%d %B %Y %H:%M %Z"),
+        "end_date": (
+            (datetime.now(timezone.utc) + timedelta(days=1)).strftime(
+                "%d %B %Y %H:%M %Z"
+            )
+        ),
+        "time": datetime.now(timezone.utc).strftime("%H:%M %Z"),
+        "location": "Coming Soon",
+        "venue_address": "45 Rue des Entrepreneurs, Lomé",
+        "image_url": "/static/images/events/What-is-Python.jpg",
         "status": "upcoming",
         "speakers": [],
         "schedule": [],
@@ -305,6 +326,11 @@ parteners = [
         "name": "Python Software Foundation",
         "logo_url": "psf-logo.png",
         "symbol": "PSF",
+    },
+    {
+        "name": "Python Ghana",
+        "logo_url": "pyghana.png",
+        "symbol": "pyghana-logo",
     },
     {"name": "Hyever", "logo_url": "hyver.png", "symbol": "hyver-logo"},
     {

@@ -4,43 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code of Conduct - Python Togo</title>
+    <title>Our Vision - Python Togo</title>
     <style>
         :root {
-            --primary-green: #27ae60;
-            --secondary-green: #e8f5e9;
+            --primary-green: #4d8c57;
+            --secondary-yellow: #f5c242;
+            --bg-light: #f8f9fa;
             --text-dark: #333333;
             --text-light: #666666;
-            --background-light: #f5f5f5;
-            --background-white: #ffffff;
-            --accent-yellow: #ffd700;
+            --white: #ffffff;
+            --border-light: #e8e8e8;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
+            background-color: var(--white);
             color: var(--text-dark);
-            background-color: var(--background-white);
             line-height: 1.6;
         }
 
-        /* Navigation */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
         .navbar {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .logo {
-            display: flex;
             align-items: center;
         }
 
@@ -48,369 +55,746 @@
             height: 40px;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
             list-style: none;
         }
 
-        .nav-links li {
-            margin-left: 2rem;
+        .nav-menu li {
+            margin: 0 15px;
         }
 
-        .nav-links a {
+        .nav-menu a {
             text-decoration: none;
             color: var(--text-dark);
-            font-size: 0.9rem;
             font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-green);
         }
 
         .sign-in-btn {
+            display: inline-block;
             background-color: var(--primary-green);
-            color: white;
-            padding: 0.5rem 1rem;
+            color: var(--white);
+            padding: 8px 16px;
             border-radius: 4px;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            margin-left: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .sign-in-btn:hover {
+            background-color: #3d7246;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
         }
 
         /* Hero Section */
         .hero {
+            background-color: var(--white);
+            padding: 60px 0;
             text-align: center;
-            padding: 4rem 1rem;
-            background-color: var(--background-light);
         }
 
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
         .hero p {
-            font-size: 1.1rem;
             color: var(--text-light);
+            font-size: 1.1rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
         }
 
-        /* Main Content */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+        .mission-boxes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .mission-box {
+            text-align: center;
+            background: var(--white);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            width: 31%;
+        }
+
+        .mission-box h3 {
+            color: var(--primary-green);
+            margin: 15px 0;
+        }
+
+        .mission-box p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 2.5rem;
+            display: inline-block;
+            font-size: 2rem;
             color: var(--text-dark);
+            margin-bottom: 15px;
             position: relative;
         }
 
-        .section-title::after {
-            content: "";
-            display: block;
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 50px;
             height: 3px;
+            background-color: var(--secondary-yellow);
+        }
+
+        .section-subtitle {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--bg-light);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        /* Vision Mission Section */
+        .vision-mission {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .vision-box,
+        .mission-box {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .box-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .box-icon {
+            width: 50px;
+            height: 50px;
             background-color: var(--primary-green);
-            margin: 0.5rem auto 0;
-        }
-
-        .content-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        h2 {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--white);
             font-size: 1.5rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--text-dark);
-            border-bottom: 2px solid var(--secondary-green);
-            padding-bottom: 0.5rem;
         }
 
-        h3 {
-            font-size: 1.2rem;
-            margin: 1.2rem 0 0.8rem;
-            color: var(--text-dark);
+        .box-title {
+            color: var(--primary-green);
+            font-size: 1.5rem;
         }
 
-        p {
-            margin-bottom: 1rem;
-            color: var(--text-light);
+        /* Values Section */
+        .values-section {
+            background-color: var(--bg-light);
         }
 
-        ul,
-        ol {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            color: var(--text-light);
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
         }
 
-        li {
-            margin-bottom: 0.5rem;
+        .value-card {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
         }
 
-        .highlight {
-            background-color: var(--secondary-green);
-            border-left: 4px solid var(--primary-green);
-            padding: 1rem;
-            margin: 1rem 0;
+        .value-card:hover {
+            transform: translateY(-5px);
         }
 
-        .contact-info {
-            background-color: var(--secondary-green);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-
-        .green-button {
-            display: inline-block;
+        .value-icon {
+            width: 60px;
+            height: 60px;
             background-color: var(--primary-green);
-            color: white;
-            padding: 0.8rem 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+
+        .value-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+        }
+
+        /* Goals Section */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .goal-number {
+            background-color: var(--secondary-yellow);
+            color: var(--text-dark);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .goal-content h3 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-yellow);
+            color: var(--text-dark);
+            padding: 12px 30px;
             border-radius: 4px;
             text-decoration: none;
-            font-weight: 500;
-            margin-top: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e5b025;
         }
 
         /* Footer */
         footer {
-            background-color: var(--background-light);
-            padding: 2rem 5%;
-            text-align: center;
-            margin-top: 3rem;
+            background-color: var(--primary-green);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
         }
 
         .footer-logo {
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
         }
 
-        .footer-logo img {
-            height: 30px;
+        .footer-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
         }
 
-        .footer-nav {
-            display: flex;
-            justify-content: center;
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-yellow);
+        }
+
+        .footer-column ul {
             list-style: none;
-            margin-bottom: 1rem;
         }
 
-        .footer-nav li {
-            margin: 0 1rem;
+        .footer-column ul li {
+            margin-bottom: 10px;
         }
 
-        .footer-nav a {
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            color: var(--text-dark);
+            transition: color 0.3s;
             font-size: 0.9rem;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary-yellow);
         }
 
         .social-links {
             display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            margin: 1rem 0;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
         }
 
-        .social-links a {
-            margin: 0 0.5rem;
-            color: var(--text-dark);
-            text-decoration: none;
+        .social-link:hover {
+            background-color: var(--secondary-yellow);
         }
 
-        .copyright {
-            font-size: 0.8rem;
-            color: var(--text-light);
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .mission-boxes {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .mission-box {
+                width: 100%;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 768px) {
-            .navbar {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
                 flex-direction: column;
-                padding: 1rem;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
             }
 
-            .nav-links {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-menu.active {
+                left: 0;
             }
 
-            .nav-links li {
-                margin: 0.5rem;
+            .nav-menu li {
+                margin: 15px 0;
             }
 
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
+            .hamburger {
+                display: block;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">
-            <img src="/api/placeholder/50/50" alt="Python Togo Logo">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="/api/placeholder/150/40" alt="Python Togo Logo">
+                </a>
+                <div class="hamburger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Our Resources</a></li>
+                    <li><a href="#">Our Programs</a></li>
+                    <li><a href="#">Events</a></li>
+                </ul>
+                <a href="#" class="sign-in-btn">Sign In</a>
+            </nav>
         </div>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Get Involved</a></li>
-            <li><a href="#">Our Programs</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Events</a></li>
-        </ul>
-        <div>
-            <a href="#" class="sign-in-btn">Sign in</a>
-        </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Code of Conduct</h1>
-        <p>Our guidelines to ensure a respectful, inclusive, and collaborative environment within the Python Togo
-            community.</p>
-        <a href="#" class="green-button">Contact Us</a>
+        <div class="container">
+            <h1>Our Vision & Mission</h1>
+            <p>Discover what drives us and how we work to develop the Python ecosystem in Togo and create opportunities
+                for developers.</p>
+        </div>
     </section>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="content-card">
-            <div class="highlight">
-                <p>The Python Togo community is committed to providing a welcoming, respectful, and inclusive
-                    environment for everyone, regardless of gender, sexual orientation, disability, physical appearance,
-                    body size, race, religion, or technical experience.</p>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="/api/placeholder/500/350" alt="Python Togo Community">
+                </div>
+                <div class="about-text">
+                    <h2>Who We Are</h2>
+                    <p>Python Togo is a dynamic community dedicated to fostering Python development in Togo. We provide
+                        opportunities for knowledge exchange, collaboration, and skills building for developers at all
+                        levels.</p>
+                    <p>Founded by passionate Python enthusiasts, our community has grown to include developers from
+                        across Togo who share a common interest in Python programming and its applications.</p>
+                    <p>We believe in the power of community and collaborative learning to create a strong Python
+                        ecosystem that can contribute to technological advancement in Togo.</p>
+                </div>
             </div>
-
-            <h2>Our Commitment</h2>
-            <p>In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge
-                to make participation in our community a harassment-free experience for everyone, regardless of age,
-                body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and
-                expression, level of experience, education, socio-economic status, nationality, personal appearance,
-                race, religion, or sexual identity and orientation.</p>
-
-            <h2>Our Standards</h2>
-            <p>Examples of behavior that contributes to creating a positive environment include:</p>
-            <ul>
-                <li>Using welcoming and inclusive language</li>
-                <li>Being respectful of differing viewpoints and experiences</li>
-                <li>Gracefully accepting constructive criticism</li>
-                <li>Focusing on what is best for the community</li>
-                <li>Showing empathy towards other community members</li>
-            </ul>
-
-            <p>Examples of unacceptable behavior include:</p>
-            <ul>
-                <li>The use of sexualized language or imagery and unwelcome sexual attention or advances</li>
-                <li>Trolling, insulting/derogatory comments, and personal or political attacks</li>
-                <li>Public or private harassment</li>
-                <li>Publishing others' private information, such as a physical or electronic address, without explicit
-                    permission</li>
-                <li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
-            </ul>
-
-            <h2>Responsibilities of Moderators</h2>
-            <p>Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior. They
-                will take appropriate and fair corrective action in response to any behavior that they deem
-                inappropriate, threatening, offensive, or harmful.</p>
-
-            <h2>Scope</h2>
-            <p>This Code of Conduct applies within all Python Togo community spaces, including but not limited to:</p>
-            <ul>
-                <li>In-person meetings and events</li>
-                <li>Discussions on online forums, mailing lists, and social media</li>
-                <li>Collaborative projects and code repositories</li>
-                <li>Workshops and training sessions</li>
-            </ul>
-
-            <h2>Enforcement</h2>
-            <p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community
-                leaders responsible for enforcement. All complaints will be reviewed and investigated promptly and
-                fairly.</p>
-
-            <p>All community leaders are obligated to respect the privacy and security of the reporter of any incident.
-            </p>
-
-            <h2>Enforcement Guidelines</h2>
-            <p>Community leaders will follow these Community Impact Guidelines in determining the consequences for any
-                action they deem in violation of this Code of Conduct:</p>
-
-            <h3>1. Correction</h3>
-            <p><strong>Community Impact:</strong> Use of inappropriate language or other behavior deemed unprofessional
-                or unwelcome in the community.</p>
-            <p><strong>Consequence:</strong> A private, written warning from community leaders, providing clarity around
-                the nature of the violation and an explanation of why the behavior was inappropriate. A public apology
-                may be requested.</p>
-
-            <h3>2. Warning</h3>
-            <p><strong>Community Impact:</strong> A violation through a single incident or series of actions.</p>
-            <p><strong>Consequence:</strong> A warning with consequences for continued behavior. No interaction with the
-                people involved, including unsolicited interaction with those enforcing the Code of Conduct, for a
-                specified period of time.</p>
-
-            <h3>3. Temporary Ban</h3>
-            <p><strong>Community Impact:</strong> A serious violation of community standards, including sustained
-                inappropriate behavior.</p>
-            <p><strong>Consequence:</strong> A temporary ban from any sort of interaction or public communication with
-                the community for a specified period of time. No public or private interaction with the people involved
-                is allowed during this period.</p>
-
-            <h3>4. Permanent Ban</h3>
-            <p><strong>Community Impact:</strong> Demonstrating a pattern of violation of community standards, including
-                sustained inappropriate behavior, harassment of an individual, or aggression toward or disparagement of
-                classes of individuals.</p>
-            <p><strong>Consequence:</strong> A permanent ban from any sort of public interaction within the community.
-            </p>
-
-            <div class="contact-info">
-                <h2>Contact</h2>
-                <p>If you are the subject of or witness to any violations of this Code of Conduct, please contact our
-                    moderation team:</p>
-                <p>📧 Email: <strong>contact@pythontogo.org</strong></p>
-                <p>☎️ Phone: <strong>+228 XX XX XX XX</strong></p>
-                <a href="#" class="green-button">Contact Us</a>
-            </div>
-
-            <h2>Attribution</h2>
-            <p>This Code of Conduct is adapted from the <a
-                    href="https://www.contributor-covenant.org/version/2/0/code_of_conduct.html"
-                    style="color: var(--primary-green);">Contributor Covenant</a>, version 2.0.</p>
         </div>
-    </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Foundation</h2>
+                <p class="section-subtitle">The pillars that guide our community's growth and activities</p>
+            </div>
+            <div class="vision-mission">
+                <div class="vision-box">
+                    <div class="box-header">
+                        <div class="box-icon">V</div>
+                        <h3 class="box-title">Vision</h3>
+                    </div>
+                    <p>Our vision is to create a dynamic and innovative Python ecosystem in Togo that is recognized
+                        regionally and internationally. We aspire to make Togo a hub of excellence in Python development
+                        in West Africa, where Python-based technologies and solutions significantly contribute to the
+                        country's socio-economic development.</p>
+                    <p>We envision a community where every Togolese Python developer is equipped with the skills and
+                        resources needed to excel in the global tech industry and address local challenges through
+                        innovative solutions.</p>
+                </div>
+                <div class="mission-box">
+                    <div class="box-header">
+                        <div class="box-icon">M</div>
+                        <h3 class="box-title">Mission</h3>
+                    </div>
+                    <p>Our mission is to promote the adoption and use of the Python programming language in Togo through
+                        education, collaboration, and innovation. We are committed to:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Educating and training the next generation of Python developers</li>
+                        <li>Facilitating knowledge sharing and collaboration among members</li>
+                        <li>Creating professional opportunities for developers</li>
+                        <li>Developing innovative technology solutions to solve local problems</li>
+                        <li>Establishing strategic partnerships with other organizations and businesses</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Values</h2>
+                <p class="section-subtitle">Core principles that guide our community and shape our culture</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">C</div>
+                    <h3>Collaboration</h3>
+                    <p>We believe in the power of collaboration and teamwork to achieve common goals and drive
+                        innovation.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">I</div>
+                    <h3>Innovation</h3>
+                    <p>We encourage creative thinking and exploration of new ideas to solve problems and constantly
+                        improve our solutions.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">E</div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in everything we do, maintaining high standards of quality and
+                        professionalism.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">I</div>
+                    <h3>Inclusivity</h3>
+                    <p>We value diversity and are committed to creating an inclusive environment where everyone feels
+                        welcome and respected.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Goals Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Goals</h2>
+                <p class="section-subtitle">Strategic objectives that drive our community forward</p>
+            </div>
+            <div class="goals-grid">
+                <div class="goal-item">
+                    <div class="goal-number">1</div>
+                    <div class="goal-content">
+                        <h3>Skills Development</h3>
+                        <p>Regularly organize training sessions, workshops, and hackathons to improve the technical
+                            skills of Python developers in Togo.</p>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-number">2</div>
+                    <div class="goal-content">
+                        <h3>Community Growth</h3>
+                        <p>Achieve a vibrant community of more than 1000 active members by 2026, with representation in
+                            all regions of Togo.</p>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-number">3</div>
+                    <div class="goal-content">
+                        <h3>Strategic Partnerships</h3>
+                        <p>Establish strong partnerships with educational institutions, businesses, and other tech
+                            communities to create a robust Python ecosystem.</p>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-number">4</div>
+                    <div class="goal-content">
+                        <h3>Community Projects</h3>
+                        <p>Initiate and successfully implement open source projects that address local challenges and
+                            actively involve community members.</p>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-number">5</div>
+                    <div class="goal-content">
+                        <h3>International Visibility</h3>
+                        <p>Represent Togo at international Python events and establish connections with other Python
+                            communities worldwide.</p>
+                    </div>
+                </div>
+                <div class="goal-item">
+                    <div class="goal-number">6</div>
+                    <div class="goal-content">
+                        <h3>Inclusion and Diversity</h3>
+                        <p>Ensure fair and diverse representation within the community, with a particular focus on
+                            increasing female participation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Join our Python Togo Community</h2>
+            <p>Whether you're a beginner or an expert in Python, be part of our dynamic community and help shape the
+                future of technology in Togo.</p>
+            <a href="#" class="cta-button">Become a Member</a>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">
-            <img src="/api/placeholder/50/50" alt="Python Togo Logo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="/api/placeholder/150/40" alt="Python Togo Logo"
+                            style="filter: brightness(0) invert(1);">
+                    </div>
+                    <p>A community dedicated to the rise of Python development in Togo.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Programs</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Resources</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Python Tutorials</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Community Projects</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <p>Email: contact@pythontogo.org</p>
+                    <p>Phone: +228 xx xx xx xx</p>
+                    <p>Lomé, Togo</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Python Togo. All rights reserved.</p>
+            </div>
         </div>
-        <ul class="footer-nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Our Story</a></li>
-            <li><a href="#">Get Involved</a></li>
-            <li><a href="#">Our Programs</a></li>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Events</a></li>
-        </ul>
-        <div class="social-links">
-            <a href="#" title="GitHub">GitHub</a>
-            <a href="#" title="Twitter">Twitter</a>
-            <a href="#" title="LinkedIn">LinkedIn</a>
-            <a href="#" title="Facebook">Facebook</a>
-        </div>
-        <p class="copyright">© 2025 Python Togo. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+
+            hamburger.addEventListener('click', function () {
+                navMenu.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 
 </html>

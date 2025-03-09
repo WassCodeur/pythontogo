@@ -30,7 +30,8 @@
 
 
         <div class="logo">
-            <img src="{{ url_for('static', path='images/logo.svg') }}" alt="Python Togo Logo">
+            <a href="{{ url_for('home')}}"><img src="{{ url_for('static', path='images/logo.svg') }}"
+                    alt="Python Togo Logo"></a>
 
         </div>
 
@@ -70,7 +71,8 @@
         <div class="footer-content">
             <!-- Logo -->
             <div class="logo">
-                <img src="{{ url_for('static', path='images/logo.svg') }}" alt="Python Togo Logo">
+                <a href="{{ url_for('home')}}"><img src="{{ url_for('static', path='images/logo.svg') }}"
+                        alt="Python Togo Logo"></a>
 
             </div>
 
@@ -87,7 +89,7 @@
 
             <!-- Social Media Icons -->
             <div class="social-icons">
-     
+
                 <a href="#" aria-label="Github">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512">
                         <path
@@ -131,7 +133,7 @@
         <div class="footer-divider"></div>
 
         <div class="copyright">
-            &copy; {{ year }} Python Togo Society. All rights reserved.
+            &copy; {{ year }} Python Togo. All rights reserved.
         </div>
     </footer>
 </body>

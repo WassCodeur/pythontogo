@@ -74,6 +74,14 @@ def coc(request: Request):
         context={"year": year, "languages": languages},
     )
 
+@app.get("/mission_vision")
+def mission_vision(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="mission_vision.html",
+        context={"year": year, "languages": languages},
+    )
+
 @app.get("/shop", response_class=HTMLResponse)
 def shop_swag(request: Request):
     return templates.TemplateResponse(
