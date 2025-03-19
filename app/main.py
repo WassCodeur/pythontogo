@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
-from .database  import (
+from database  import (
     get_all_events,
     get_swags,
     get_teams_members,
@@ -98,6 +98,22 @@ def gallery(request: Request):
         context={"year": year, "languages": languages, "galleries": galleries},
     )
 
+@app.get("/galleries")
+def gallery_dash(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="gallery-dash.html",
+        context={"year": year, "languages": languages},
+    )
+
+@app.get("/blogs")
+def blog(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="blog.html",
+        context={"year": year, "languages": languages},
+    )
+
 @app.get("/api/shop/swags", response_class=JSONResponse)
 def swags(request: Request):
    
@@ -120,6 +136,48 @@ def contact(request: Request):
         name="contact.html",
         context={"year": year, "languages": languages},
     )
+
+@app.get("/admin", response_class=HTMLResponse)
+def admin(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="admin.html",
+        context={"year": year, "languages": languages},
+    )
+
+@app.get("/add-event", response_class=HTMLResponse)
+def add_event(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="add-event.html",
+        context={"year": year, "languages": languages},
+    )
+
+@app.get("/members")
+def members(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="members.html",
+        context={"year": year, "languages": languages},
+    )
+
+@app.get("/signup", response_class=HTMLResponse)
+def signup(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="signup.html",
+        context={"year": year, "languages": languages},
+    )
+
+@app.get("/login", response_class=HTMLResponse)
+def login(request: Request):
+    return templates.TemplateResponse(
+        request=request,
+        name="login.html",
+        context={"year": year, "languages": languages},
+    )
+
+
 
 
 if __name__ == "__main__":

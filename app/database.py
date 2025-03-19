@@ -452,3 +452,5 @@ def get_swags():
 
 def get_parteners():
     return parteners
+
+
