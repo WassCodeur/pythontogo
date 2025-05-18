@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, PlainTextResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -17,9 +18,29 @@ import pycountry
 import os
 import json
 
-
 app = FastAPI()
 
+origins = [
+    "https://pytogo.org",
+    "https://www.pytogo.org",
+    "https://pycontg.pytogo.org",
+    "http://localhost",
+    "http://127.0.0.1:5500",
+    "http://127.0.0.1",
+    "http://127.0.0.1:5500",
+    "http://localhost:8000",
+    "http://localhost:5000",
+    "http://localhost:5500",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 static_folder = os.path.join(os.path.dirname(__file__), "static")
 templates_folder = os.path.join(os.path.dirname(__file__), "templates")
