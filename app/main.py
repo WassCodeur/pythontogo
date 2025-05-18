@@ -5,13 +5,14 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
-from database  import (
+from database import (
     get_all_events,
     get_swags,
     get_teams_members,
     get_event_by_id,
     get_parteners,
     galleries,
+    hero_images,
 )
 from datetime import datetime
 import pycountry
@@ -66,7 +67,7 @@ def home(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="home.html",
-        context={"year": year, "languages": languages, "teams": teams_members, "partners": get_parteners()},
+        context={"year": year, "languages": languages, "teams": teams_members, "partners": get_parteners(), "hero_images": hero_images},
     )
 
 
@@ -100,7 +101,7 @@ def mission_vision(request: Request):
     return templates.TemplateResponse(
         request=request,
         name="mission_vision.html",
-        context={"year": year, "languages": languages},
+        context={"year": year, "languages": languages, "hero_images": hero_images},
     )
 
 @app.get("/shop", response_class=HTMLResponse)

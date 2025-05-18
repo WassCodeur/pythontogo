@@ -16,7 +16,7 @@
 
         {% for image in galleries %}
         <div class="gallery-item" data-height="{{ image.height }}">
-            <img src="{{ url_for('static', path='images/gallery/' + image.url) }}" alt="{{ image.caption }}">
+            <img src="{{ image.url }}" alt="{{ image.caption }}">
             <div class="item-caption">{{ image.caption }}</div>
         </div>
         {% endfor %}

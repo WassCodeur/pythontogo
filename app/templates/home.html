@@ -19,7 +19,7 @@
         <div class="hero-content">
             <h1 class="hero-title">Empowering Python Developers</h1>
             <p class="hero-subtitle">Join a thriving community of Python enthusiasts in Togo, learn, collaborate, and
-                grow your skills.</p> 
+                grow your skills.</p>
             <div class="hero-buttons">
                 <a href="{{ url_for('mission_vision')}}" class="btn btn-primary">Get Involved</a>
                 <a href="{{ url_for('mission_vision')}}" class="btn btn-secondary">Learn More</a>
@@ -30,34 +30,28 @@
     <section class="slider-container">
         <div class="slider-wrapper">
             <div class="slider">
+                {% for image in hero_images %}
                 <div class="slide">
-                    <img src="{{ url_for('static', path='images/gallery/WUL_0454(1).jpg') }}" alt="Python Togo Community">
+                    <img src="{{ image }}" alt="Python Togo Community">
                 </div>
-                <div class="slide">
-                    <img src="{{ url_for('static', path='images/gallery/WUL_0436.jpg') }}" alt="Python Togo Workshop">
-                </div>
-                <div class="slide">
-                    <img src="{{ url_for('static', path='images/gallery/WUL_0456.jpg') }}" alt="Python Togo Meetup">
-                </div>
-                <div class="slide">
-                    <img src="{{ url_for('static', path='images/gallery/pycon.jpeg') }}" alt="Python Togo Meetup">
+                {% endfor %}    
+
                 </div>
             </div>
-        </div>
 
-        <div class="slider-nav prev">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M15 18l-6-6 6-6" />
-            </svg>
-        </div>
+            <div class="slider-nav prev">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </div>
 
-        <div class="slider-nav next">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 18l6-6-6-6" />
-            </svg>
-        </div>
+            <div class="slider-nav next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </div>
     </section>
 </div>
 
@@ -76,7 +70,7 @@
     </div>
 
 
-    <img src="{{ url_for('static', path='images/gallery/groupe_picture_accra.jpeg') }}" alt="Python Togo Community"
+    <img src="{{ hero_images[1] }}" alt="Python Togo Community"
         class="community-image">
 </section>
 
@@ -85,9 +79,10 @@
 <section class="partners-section">
     <div class="partners-title">Our Parteners</div>
     <div class="partners-logos">
-        {% for partner in  partners %}
-        <img src="{{ url_for('static', path='images/parteners/' + partner.logo_url) }}" alt="{{ partner.name }}" class="partner-logo  {{ partner.symbol }}">
-        
+        {% for partner in partners %}
+        <img src="{{ url_for('static', path='images/parteners/' + partner.logo_url) }}" alt="{{ partner.name }}"
+            class="partner-logo  {{ partner.symbol }}">
+
         {% endfor %}
     </div>
 </section>
@@ -107,7 +102,7 @@
         {% for member in teams %}
         <div class="team-member">
             <div class="team-member-image">
-                <img src="{{ url_for('static', path='images/team/' + member.image) }}" alt="Photo de profil">
+                <img src="{{ member.image}}" alt="Photo de profil">
             </div>
             <div class="team-member-info">
                 <div class="team-member-name">{{ member.name }}</div>
@@ -120,7 +115,7 @@
 </section>
 
 <!-- Get involve -->
-<section class="community-section-container" >
+<section class="community-section-container">
     <div class="community-section">
         <div class="community-content">
             <div class="get-involved-tag" id="involve">Get Involved</div>
@@ -155,7 +150,7 @@
                 <div class="option-icon">
                     <img src="{{ url_for('static', path='images/python.svg') }}" alt="Open Source Icon">
                 </div>
-                
+
                 <div class="option-content">
                     <h3>Contribute to Open Source</h3>
                     <p>Collaborate on projects.</p>
@@ -228,7 +223,7 @@
     <div class="navigation-arrows">
         <button class="navigation-arrow prev">←</button>
         <button class="navigation-arrow next">→</button>
-        
+
     </div>
 </section>
 
