@@ -1,3 +1,8 @@
+import typing
+
+if not hasattr(typing, "_ClassVar") and hasattr(typing, "ClassVar"):
+    typing._ClassVar = typing.ClassVar
+
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, PlainTextResponse, JSONResponse
