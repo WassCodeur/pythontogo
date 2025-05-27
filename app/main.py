@@ -10,7 +10,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 
-from database import (
+from .database import (
     get_all_events,
     get_swags,
     get_teams_members,
